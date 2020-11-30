@@ -1,34 +1,4 @@
 
-@-moz-keyframes 
-{
-
-	0%{
-		opacity: 0;
-		transform: translate(0px,80px);
-	}
-	10%{
-		opacity: 1;
-		transform: translate(0px,0px);
-		
-	}
-	50%{
-		opacity: 0;
-		transform: translate(80px,0px);
-	}
-	55%{
-		opacity: 0;
-		transform: translate(-80px,0px);
-	}
-	60%{
-		opacity: 1;
-		transform: translate(0px,0px) ;
-		animation-play-state: paused;
-	}
-	100%{
-		opacity: 0;
-		transform: translate(0px,-80px);
-	}
-}
 @keyframes anima
 {
 	0%{
@@ -38,6 +8,7 @@
 	10%{
 		opacity: 1;
 		transform: translate(0px,0px);
+		transition: tranform 10s cubic-bezier(.59, .2, .82, .29); ;
 		
 	}
 	50%{
@@ -60,231 +31,199 @@
 }
 
 
-*
-{
-	margin: 0;
+* {
+	margin:0;
 	padding:0;
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style: none;
 	z-index: 0;
+
 }
 body
 {
-
-	background-color: #fff;
-    color: #282828;
+	
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
+    display: grid;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: unset;
+    grid-template-rows: 150px 650px 750px 200px 300px 70px;
+  	grid-template-columns:200px 1fr 10px 1fr 200px;
+    grid-template-areas: ". . . . ."
+				         ". centré centré centré ."
+				         "gauche gauche . droite droite"
+				         "boutton boutton boutton boutton boutton"
+				         "pied_page pied_page pied_page pied_page pied_page"
+				         "copyright copyright copyright copyright copyright";
+	justify-content: center;
 }
-header
-{
-	z-index: 2;
-    margin-top: 0px;
-    background-color: #1EBEA5;
-    width: 100%;
-    height: 118px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-}
-header a
+.white_links
 {
 	color: white;
-	text-decoration: none;
-}
-.banner
+}					 
+header
 {
+	width: 100%;
+	height: 85px;
+	background-color: #1EBEA5;
+	font-weight: bold;
+	font-size: 0.875em;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	align-content: center;
+	align-items: center;
+	position: fixed;
+	z-index: 1;
 }
-
-.banner img,.banner h2
+header li
 {
-	align-self: center;
-    font-size: 26px;
-    font-weight: bold;
+	margin-left: 50px;
+	display: inline-block;
+}
+.logo_mark
+{
+	transform: translateX(-12px);
+	display: flex;
+	align-items: baseline;
+	font-size: 1em;
+}
+.logo_mark a:last-of-type
+{
+	transform:translate(0,-8px);
 }
 select{
 	width: 18px;
+	background-color: #1EBEA5;
+	color: white;
+	border: none;
 }
-nav ul {
-    font-size: 20px;
-   	font-weight: bold;
-    width: 1100px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    left: -50px;
-    list-style-type: none;
-}
-nav ul
+.centered
 {
+	grid-area: centré;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	
 }
-.phone_1
+.part-one
 {
-	width: 360px;
-	height: 650px;
-	background-size: cover;
-	background-image: url(../images/phone_1.PNG);
+	padding-left: 150px;
 }
-.container_1
+.part-one div:first-of-type
 {
-	margin-top: 150px;
-	align-content: flex-end;
-	display: flex;
-	justify-content: space-around;
-}
-.text
-{
-	align-self: baseline;
-}
-.text div:first-of-type
-{
-	margin-top: 150px;
-	font-size: 33px;
+	font-size: 2.06em;
 	font-weight: normal;
-	opacity: 0.7;
+	opacity: 0.7; 
 }
-.text div:nth-of-type(2),.text ul li
+
+.part-one div:nth-of-type(2)
 {
-	font-size: 16px;
+	font-size: 1em;
 	opacity: 0.7;
-	list-style-type:none; 
 }
-.text div:last-of-type
+.part-one div:last-of-type
 {
 	margin-bottom: 20px;
-	font-size: 12px;
+	font-size: 0.75em;
 	opacity: 0.5;
 }
-.text ul a
+.part-one ul a
 {
-	text-decoration: none;
 	color: #1EBEA5;
 }
-.text ul img
+.part-one ul img
 {
 	position: relative;
 	top: 5px;
 }
-.container_2
+.left
 {
-	align-content: center;
-    display: flex;
-    justify-content: space-between;
-    height: 897px;
-	
+	grid-area: gauche;
+	text-align: center;
+	overflow: hidden;
+	background-color:#D0E9EA;
+	font-size: 0.8em;
+	padding-right: 100px;
+	padding-left: 100px;
+	margin-top: 50px;
+	padding-top: 10px;
 }
-.phone_2
+.left img
 {
-	margin: auto;
-    margin-top: 100px;
-    background-color: transparent;
-    background-image: url(../images/phone_2.PNG);
-    background-size: cover;
-    width: 482px;
-    height: 525px;
+	transform: translateY(70px);
 }
-.hash
+.left h2
 {
-	margin:auto;
-	width: 300px;
-	height: 300px;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+h2
+{
+	font-size: 2em;
+	font-weight: lighter;
+}
+.right
+{
+	grid-area: droite;
+	text-align: center;
+	background-color: #EDF8F5;
+	margin-top: 50px;
+	font-size: 0.8em;
+	padding-right: 100px;
+	padding-left: 100px;
+	padding-top: 10px;
+}
+.right div:first-of-type
+{
+	margin:25px auto;
+	width: 250px;
+	height: 250px;
 	border-radius: 50%;
 	background-color: #77D7D8;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.hash div
+.right div:first-of-type > div
 {
-	font-size: 50px;
+	width: 120px;
+	height:50px;
+	border-radius: 0;
+	font-size: 2em;
 	background-color: white;
 	-moz-animation:anima 10s infinite;
 	animation: anima 10s infinite;
-	border-top-right-radius: -10px;
+	
 }
-.container_2
+.right h3
 {
-	align-content: center;
-    display: flex;
-    justify-content: space-between;
-    height: 893px;	
-    overflow: hidden;
+	margin-top: 70px;
+	font-weight: normal;
+	font-size: 0.9em;
 }
-.container_2 > div
+section:nth-of-type(4)
 {
-	flex-basis: 49%;
-	text-align: center;
-	height: 100%;
+	margin: auto;
+	grid-area: boutton;
 }
-
-.container_2 > div:nth-of-type(1)
+section input
 {
-	background-color: #D0E9EA;
-
-}
-.container_2 > div:nth-of-type(2)
-{
-	background-color: #EDF8F5;
-	padding-top: 100px;
-}
-.para{
-	z-index: 1;
-	padding-top: 50px;
-    font-size: 17px;
-    padding-right: 120px;
-    padding-left: 106px;
-   
-
-}
- .para a
- {
- 	 text-decoration: none;
- }
-
-.block_title
-{
-	font-size: 0.8em;
-	position: relative;
-	top: 50px;
-}
-h2
-{
-	font-size: 38px;
-    font-weight: lighter;
-}
-button
-{
-	z-index: 1;
 	width: 450px;
 	height: 70px;
 	border: 2px solid #77d7c8;
-    color: #1cb39b;
+	color: #1cb39b;
     background-color: white;
-	margin-top: 100px;
-	border-radius: 40px;
-    font-size: 16px;
-    font-weight: bolder;
-    letter-spacing: .071em;
-    line-height: 19px;
-    padding: 18px 32px;
-    text-transform: uppercase;
-    white-space: nowrap;
+    border-radius: 40px;
+	font-size: 1em;
+	font-weight: bolder;
+ 	letter-spacing: .071em;
+ 	cursor: pointer;
 }
 footer
 {
+	grid-area: pied_page;
 	color: rgba(255, 255, 255, .6);
-    font-size: 18px;
-    line-height: 33px;
-    width: 100%;
-    height: 300px;
-	margin-top: 100px;
+    font-size: 0.7em;
+    line-height: 25px;
 	display: flex;
 	justify-content: flex-start;
 	background-color: #273443;
@@ -293,32 +232,181 @@ footer
 }
 footer div
 {
-	margin-left: 200px;
+	margin-left: 160px;
 }
-footer li, footer a
-{
-	color: white;
-	list-style: none;
-	text-decoration: none;
-}
-.copyright
-{
-	font-size: 18px;
+.copyright{
+	grid-area: copyright;
+	font-size: 0.8em;
 	background-color: #232F3C;
-	width: 100%;
-	height: 70px;
 	display: flex;
 	align-items: center;
-	align-content: flex-start;
 }
 .copyright p
 {
 	color: grey;
-	margin-left: 200px;
+	margin-left: 160px;
 }
 .copyright p:last-of-type,.copyright p a
 {
-	margin-left: 72px;
-	text-decoration: none;
-	color: white;
+	margin-left: 55px;
+}
+
+@media screen and (max-width: 768px) 
+{
+	body{
+			position: relative;
+		    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+		    display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    flex-flow: wrap;
+	}
+	header
+	{
+		padding-top: 50px;
+	    z-index: -1;
+	    position: inherit;
+	    display: block;
+	    height: 1000px;
+	}
+	.logo_mark
+	{
+		text-align: center;
+	}
+	.logo_mark img,.part-one div:nth-of-type(3),.part-one ul,.part-two,nav,.logo_mark a:last-of-type
+	{
+		display: none;
+	}
+	.logo_mark::after
+	{
+		content: "";
+		margin: auto;
+		width: 250px;
+		height: 150px;
+		background-image: url(../images/icone_What.png);
+		background-size: cover;
+	}
+	.part-one
+	{
+		display: flex;
+	    flex-direction: column;
+	    text-align: center;
+	    transform: translate(-70px,-730px);
+	    color: white;
+	}
+	.part-one div:nth-of-type(1),.part-one div:nth-of-type(2)
+	{
+		opacity: 1;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+	.part-one div:nth-of-type(1)
+	{
+		font-size: 1.5em;
+	}
+	.part-one::after
+	{
+		content:"";
+		margin: auto;
+		width: 21.875em;
+		height: 31.25em;
+		background-image: url(../images/phone_1.PNG);
+		background-size: cover;
+		transform: translateY(30px);
+
+	}
+	.apres::after
+	{
+		content: "telecharger maintenant";
+		display: block;
+		margin:auto;
+		text-transform: uppercase;
+		text-align: center;
+		font-weight: bold;
+		color: white;
+		line-height: 3.125em;
+		width: 18.75em;
+		height: 3.125em;
+		background-color: rgb(49,247,79);
+		border-radius: 40px;
+		transform: translateY(50px);
+		cursor: pointer;
+	}
+	.left
+	{
+		transform: translateY(-880px); 
+	}
+	.left::before
+	{
+		content: "*Des frais de données peuvent s'appliquer. Cpntacter votre fournisseur pour obtenir des détails";
+		display: block;
+		margin:auto;
+		width: 300px;
+		text-align: center;
+		opacity: 0.5;
+		font-size: 0.95em;
+	}
+	.left img
+	{
+		width: 200px;
+		height: 250px;
+	}
+	.right
+	{
+		transform: translateY(-930px); 
+	}
+	.button-container
+	{
+		transform: translateY(-900px);
+	}
+	footer, .copyright
+	{
+		position: absolute;
+		bottom:270px;
+	}
+	footer
+	{
+		width: 100%;
+		height: 600px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 300px 300px;
+		grid-template-areas: "elem_1 elem_2"
+							 "elem_3 elem_4";
+		justify-content: center;
+		align-content: center;
+	}
+	footer div:first-of-type
+	{
+		grid-area: elem_1;
+
+	}
+	footer div:nth-of-type(2)
+	{
+		grid-area: elem_2;
+	}
+	footer div:nth-of-type(3)
+	{
+		grid-area: elem_3;
+	}
+	footer div:last-of-type
+	{
+		grid-area: elem_4;
+	}
+	footer div:last-of-type,footer div:first-of-type,footer div:nth-of-type(2),footer div:nth-of-type(3)
+	{
+		margin-left: 30px;
+	}
+	.copyright
+	{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+	}
+	.copyright *
+	{
+		position: relative;
+		left: 12px;
+	}
 }
